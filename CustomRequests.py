@@ -2,7 +2,7 @@ import requests
 import json
 
 
-def registration(domen, username, name, password, phone, relation):
+def registration(domen, username, name, password, phone: str, telegram):
     """ Registration in the system (allow any) """
 
     url = domen + 'api/registration'
@@ -11,7 +11,7 @@ def registration(domen, username, name, password, phone, relation):
         'first_name': name,
         'password': password,
         'phone': phone,
-        'relation': relation  # WhatsApp / Telegram / Both
+        'telegram': telegram
     }
     headers = {'Content-Type': 'application/json'}
     response = requests.post(url=url, headers=headers, data=json.dumps(data))
@@ -103,8 +103,8 @@ def get_relevant_lessons(domen, username, password):
     url = domen + 'api/get-relevant-lessons'
     response = requests.get(url=url)
     if response:
-        all_relevant_essons = json.loads(response.content)
-        return all_relevant_essons
+        all_relevant_lessons = json.loads(response.content)
+        return all_relevant_lessons
     else:
         return 'Error'
 
@@ -186,3 +186,15 @@ def get_my_lessons(domen, username, password):
         return onw_relevant_lessons
     else:
         return "Error"
+
+
+def get_timeblock_list(domen):
+    """ Getting timeblock list (allow any) """
+
+    url = domen + 'api/get-timeblocks'
+    response = requests.get(url=url)
+    if response:
+        timeblocks = json.loads(response.content)
+        return timeblocks
+    else:
+        return 'Error'

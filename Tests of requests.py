@@ -1,9 +1,9 @@
 import datetime
-from CustomRequests import registration, delete_user, get_token,\
-                           get_student_list, get_all_lessons,\
-                           get_relevant_lessons, convert_lessons_to_dict,\
-                           create_lesson, update_lesson, delete_lesson,\
-                           get_my_lessons
+from CustomRequests import (
+    registration, delete_user, get_token, get_student_list, get_all_lessons,
+    get_relevant_lessons, convert_lessons_to_dict, create_lesson,
+    update_lesson, delete_lesson, get_my_lessons, get_timeblock_list
+)
 
 # API tests:
 # 0) узнать количество юзеров (админ) -> int
@@ -52,7 +52,7 @@ yesterday = str(datetime.date.today() - datetime.timedelta(days=1))
 #                                  API tests                                  #
 ###############################################################################
 
-if True:
+if False:
     # 0
     amount_users_1 = len(get_student_list(domen, admin_username,
                                           admin_password))
@@ -248,7 +248,7 @@ if True:
 
 # Validation tests:
 
-if True:
+if False:
     # 1
     amount_users_1 = len(get_student_list(domen, admin_username,
                          admin_password))
@@ -468,3 +468,8 @@ if True:
         print('22)', True)
     else:
         print('22)', False)
+
+if isinstance(get_timeblock_list(domen), list):
+    print('23)', True)
+else:
+    print('23)', False)
