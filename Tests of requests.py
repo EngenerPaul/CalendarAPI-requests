@@ -469,7 +469,7 @@ if False:
     else:
         print('22)', False)
 
-if isinstance(get_timeblock_list(domen), list):
-    print('23)', True)
-else:
-    print('23)', False)
+# if isinstance(get_timeblock_list(domen), list):
+#     print('23)', True)
+# else:
+#     print('23)', False)

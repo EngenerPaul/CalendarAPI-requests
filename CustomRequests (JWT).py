@@ -15,10 +15,7 @@ def registration(domen, username, name, password, phone: str, telegram):
     }
     headers = {'Content-Type': 'application/json'}
     response = requests.post(url=url, headers=headers, data=json.dumps(data))
-    if response:
-        return json.loads(response.content)
-    else:
-        return False
+    return json.loads(response.content)
 
 
 def delete_user(domen, username, password, del_username):
@@ -54,11 +51,8 @@ def get_token(domen, username, password):
     if response:
         token = json.loads(response.content)['access']
         return token
-        # print(response)
-        # print(response.content)
     else:
         return "Username or password is not correct"
-        # print('Doent work')
 
 
 def get_student_list(domen, username, password):
@@ -97,7 +91,7 @@ def get_all_lessons(domen, username, password):
         return "Error"
 
 
-def get_relevant_lessons(domen, username, password):
+def get_relevant_lessons(domen):
     """ Get list of relevant lessons (allow any) """
 
     url = domen + 'api/get-relevant-lessons'
